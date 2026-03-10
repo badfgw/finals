@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGCSE Exam Timetable 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --ink: #1a1a2e;
+    --april: #e8d5c4;
+    --april-accent: #c4956a;
+    --may: #c8dce8;
+    --may-accent: #4a7fa5;
+    --june: #c8e8d4;
+    --june-accent: #3a8a5a;
+    --celebration: #f5e6c8;
+    --celebration-accent: #d4a017;
+    --border: #e0d8ce;
+    --text-light: #6b6b7b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 48px 32px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  header .label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  header h1 span {
+    color: var(--april-accent);
+  }
+
+  header .subtitle {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--april-accent);
+    margin: 20px auto 0;
+    border-radius: 2px;
+  }
+
+  .month-block {
+    margin-bottom: 48px;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .month-block:nth-child(2) { animation-delay: 0.1s; }
+  .month-block:nth-child(3) { animation-delay: 0.2s; }
+  .month-block:nth-child(4) { animation-delay: 0.3s; }
+
+  .month-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .month-pill {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 6px 22px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+
+  .april .month-pill { background: var(--april); color: var(--april-accent); }
+  .may .month-pill { background: var(--may); color: var(--may-accent); }
+  .june .month-pill { background: var(--june); color: var(--june-accent); }
+
+  .month-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+  }
+
+  thead th {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 0 16px 10px;
+    text-align: left;
+  }
+
+  tbody tr {
+    background: white;
+    border-radius: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  }
+
+  tbody td {
+    padding: 14px 16px;
+    font-size: 13.5px;
+    font-weight: 400;
+    vertical-align: middle;
+  }
+
+  tbody td:first-child {
+    border-radius: 12px 0 0 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  tbody td:last-child {
+    border-radius: 0 12px 12px 0;
+    color: var(--text-light);
+    font-size: 12.5px;
+  }
+
+  .subject-name {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .paper-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .april .paper-badge { background: var(--april); color: var(--april-accent); }
+  .may .paper-badge { background: var(--may); color: var(--may-accent); }
+  .june .paper-badge { background: var(--june); color: var(--june-accent); }
+
+  .time-cell {
+    font-size: 13px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .duration-cell {
+    font-size: 12px;
+    color: var(--text-light);
+    white-space: nowrap;
+  }
+
+  .celebration-row td {
+    background: var(--celebration) !important;
+    color: var(--celebration-accent) !important;
+    font-weight: 600;
+  }
+
+  .celebration-row:hover {
+    box-shadow: 0 6px 20px rgba(212,160,23,0.15) !important;
+  }
+
+  .oral-row td {
+    font-style: italic;
+    color: var(--text-light);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 56px;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media print {
+    body { padding: 20px; }
+    tbody tr:hover { transform: none; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="label">Year 11 · Cambridge IGCSE</div>
+    <h1>Exam Timetable <span>2026</span></h1>
+    <p class="subtitle">Non-calculator papers marked where applicable · All times are local</p>
+    <div class="divider"></div>
+  </header>
+
+  <!-- APRIL -->
+  <div class="month-block april">
+    <div class="month-header">
+      <div class="month-pill">April</div>
+      <div class="month-line"></div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Subject</th>
+          <th>Paper</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="oral-row">
+          <td>Wed 15th April</td>
+          <td class="subject-name">Arabic 2nd Language — Orals</td>
+          <td>—</td>
+          <td class="time-cell">Various</td>
+          <td class="time-cell">Various</td>
+          <td class="duration-cell">—</td>
+        </tr>
+        <tr class="oral-row">
+          <td>Thu 16th April</td>
+          <td class="subject-name">Arabic 2nd Language — Orals</td>
+          <td>—</td>
+          <td class="time-cell">Various</td>
+          <td class="time-cell">Various</td>
+          <td class="duration-cell">—</td>
+        </tr>
+        <tr>
+          <td>Mon 27th April</td>
+          <td class="subject-name">Arabic 2nd Language</td>
+          <td><span class="paper-badge">Paper 2</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">13:15</td>
+          <td class="duration-cell">1 hour</td>
+        </tr>
+        <tr>
+          <td>Wed 29th April</td>
+          <td class="subject-name">Mathematics Extended</td>
+          <td><span class="paper-badge">Paper 1</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">14:15</td>
+          <td class="duration-cell">2 hours</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MAY -->
+  <div class="month-block may">
+    <div class="month-header">
+      <div class="month-pill">May</div>
+      <div class="month-line"></div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Subject</th>
+          <th>Paper</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tue 5th May</td>
+          <td class="subject-name">Mathematics Extended</td>
+          <td><span class="paper-badge">Paper 4</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">14:15</td>
+          <td class="duration-cell">2 hours</td>
+        </tr>
+        <tr>
+          <td>Wed 6th May</td>
+          <td class="subject-name">English 1st Language</td>
+          <td><span class="paper-badge">Paper 1</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">10:30</td>
+          <td class="duration-cell">2 hours</td>
+        </tr>
+        <tr>
+          <td>Fri 8th May</td>
+          <td class="subject-name">Physics Extended</td>
+          <td><span class="paper-badge">Paper 4</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">09:45</td>
+          <td class="duration-cell">1hr 15min</td>
+        </tr>
+        <tr>
+          <td>Fri 8th May</td>
+          <td class="subject-name">English Literature</td>
+          <td><span class="paper-badge">Paper 1</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">13:45</td>
+          <td class="duration-cell">1hr 30min</td>
+        </tr>
+        <tr>
+          <td>Mon 11th May</td>
+          <td class="subject-name">Business Studies</td>
+          <td><span class="paper-badge">Paper 1</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">10:00</td>
+          <td class="duration-cell">1hr 30min</td>
+        </tr>
+        <tr>
+          <td>Mon 11th May</td>
+          <td class="subject-name">English Literature</td>
+          <td><span class="paper-badge">Paper 3</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">13:00</td>
+          <td class="duration-cell">45 min</td>
+        </tr>
+        <tr>
+          <td>Tue 12th May</td>
+          <td class="subject-name">Design & Technology</td>
+          <td><span class="paper-badge">Paper 1</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">13:30</td>
+          <td class="duration-cell">1hr 15min</td>
+        </tr>
+        <tr>
+          <td>Wed 13th May</td>
+          <td class="subject-name">Computer Science</td>
+          <td><span class="paper-badge">Paper 1</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">10:15</td>
+          <td class="duration-cell">1hr 45min</td>
+        </tr>
+        <tr>
+          <td>Fri 15th May</td>
+          <td class="subject-name">English 1st Language</td>
+          <td><span class="paper-badge">Paper 2</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">10:30</td>
+          <td class="duration-cell">2 hours</td>
+        </tr>
+        <tr>
+          <td>Mon 18th May</td>
+          <td class="subject-name">Business Studies</td>
+          <td><span class="paper-badge">Paper 2</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">10:00</td>
+          <td class="duration-cell">1hr 30min</td>
+        </tr>
+        <tr>
+          <td>Tue 19th May</td>
+          <td class="subject-name">Physics Extended</td>
+          <td><span class="paper-badge">Paper 6</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">13:15</td>
+          <td class="duration-cell">1 hour</td>
+        </tr>
+        <tr>
+          <td>Wed 20th May</td>
+          <td class="subject-name">Computer Science</td>
+          <td><span class="paper-badge">Paper 2</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">10:15</td>
+          <td class="duration-cell">1hr 45min</td>
+        </tr>
+        <tr>
+          <td>Fri 22nd May</td>
+          <td class="subject-name">Arabic 2nd Language — Listening</td>
+          <td><span class="paper-badge">Paper 1</span></td>
+          <td class="time-cell">11:00</td>
+          <td class="time-cell">11:50</td>
+          <td class="duration-cell">50 min</td>
+        </tr>
+        <tr>
+          <td>Fri 22nd May</td>
+          <td class="subject-name">Arabic 2nd Language</td>
+          <td><span class="paper-badge">Session 2</span></td>
+          <td class="time-cell">11:50</td>
+          <td class="time-cell">12:50</td>
+          <td class="duration-cell">1 hour</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- JUNE -->
+  <div class="month-block june">
+    <div class="month-header">
+      <div class="month-pill">June</div>
+      <div class="month-line"></div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Subject</th>
+          <th>Paper</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wed 3rd June</td>
+          <td class="subject-name">Physics Extended</td>
+          <td><span class="paper-badge">Paper 2</span></td>
+          <td class="time-cell">08:30</td>
+          <td class="time-cell">09:15</td>
+          <td class="duration-cell">45 min</td>
+        </tr>
+        <tr>
+          <td>Thu 4th June</td>
+          <td class="subject-name">Design & Technology</td>
+          <td><span class="paper-badge">Paper 3</span></td>
+          <td class="time-cell">12:15</td>
+          <td class="time-cell">13:15</td>
+          <td class="duration-cell">1 hour</td>
+        </tr>
+        <tr class="celebration-row">
+          <td>Thu 11th June</td>
+          <td>🎉 Celebration Trip — Qurum Funzone</td>
+          <td>—</td>
+          <td>08:00</td>
+          <td>13:00</td>
+          <td>5 hours</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    17 exam sessions · Cambridge IGCSE 2026 · Good luck! 🍀
+  </footer>
+
+</div>
+</body>
+</html>
